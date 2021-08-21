@@ -4,21 +4,16 @@ import {
   Switch,
   Route,
 } from "react-router-dom";
+import Registro from './components/Registro';
 
 
 function App() {
   return (
     <Router>
     <Switch>
-          <Route path="/about">
-            <About />
-          </Route>
-          <Route path="/users">
-            <Users />
-          </Route>
-          <Route path="/">
-            <Home />
-          </Route>
+          <Route path="/"> <Registro /> </Route>
+          <Route path=""></Route>
+          <Route path=""> </Route>
         </Switch>
     </Router>
   );
