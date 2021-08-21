@@ -1,38 +1,108 @@
-.App {
-  text-align: center;
+body{
+  background-color: #c1bdba;
+  font-family: 'Titillium Web', sans-serif;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+form{
   display: flex;
   flex-direction: column;
-  align-items: center;
+}
+a{
+  text-decoration: none;
+  background-color: #1ab188;
+  transition: .5s ease;
+}
+ a:hover{
+  background-color:#2d8068; 
+}
+.form{
+  background: #142532;
+  padding: 40px;
+  max-width: 600px;
+  margin: 40px auto;
+  border-radius: 4px;
+  box-shadow:0 4px 10px 4px;
+}
+.tab-group{
+  list-style: none;
+  padding: 0;
+  margin: 0 0 40px 0;
+}
+ul{
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+}
+li a{
+  text-decoration: none;
+  padding: 15px;
+  background: rgba(#a0b3b0,.25);
+  color: #535a59;
+  font-size: 20px;
+  width: 50%;
+  text-align:center;
+  cursor:pointer;
+  transition:.5s ease;
+}
+li a :hover{
+  background: #2d8068;
+  color: #9c9696;
+}
+.active a{
+  background: #1ab188;
+  color:#ffff;
 }
 
-.App-link {
-  color: #61dafb;
+h1 {
+  text-align:center;
+  color:#ffff;
+  font-weight:100;
+  margin:0 0 40px;
+}
+label{
+  position: absolute;
+  transform: translate(6px);
+  left:13px;
+  transition:all 0.25s ease;
+  pointer-events: none;
+  font-size:22px;
+  
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+label.active {
+  transform:translateY(50px);
+  left:2px;
+  font-size:14px;
+}
+.field-wrap {
+  display: flex;
+  position:relative;
+  margin-bottom:40px;
+}
+input{
+  font-size:22px;
+  display:block;
+  width:100%;
+  height:100%;
+  padding:5px 10px;
+  background:none;
+  background-image:none;
+  border:1px solid;
+  color:#ffff;
+  border-radius:0;
+  transition:border-color .25s ease, box-shadow .25s ease;
+}
+input:focus{
+  outline:0;
+	border-color:#1ab188;
+}
+button {
+  border:0;
+  outline:none;
+  border-radius:0;
+  padding:15px 0;
+  font-size:2rem;
+  font-weight:100;
+  text-transform:uppercase;
+  letter-spacing:.1em;
+  background:#1ab188;
+  color:#fff;
 }
