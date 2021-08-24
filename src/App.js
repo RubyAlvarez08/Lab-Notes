@@ -5,15 +5,16 @@ import {
   Route,
 } from "react-router-dom";
 import Registro from './components/Registro';
+import Notes from './components/Notes';
 
 
 function App() {
   return (
     <Router>
     <Switch>
-          <Route path="/"> <Registro /> </Route>
-          <Route path=""></Route>
-          <Route path=""> </Route>
+          <Route path="/" component={Registro} />
+          <Route path="/notes" component={Notes} />
+        {/*   <Route path=""> </Route> */}
         </Switch>
     </Router>
   );
