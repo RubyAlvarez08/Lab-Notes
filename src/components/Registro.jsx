@@ -1,33 +1,55 @@
-import React, { useState, useHistory } from "react";
+import React, { useState } from "react";
 import "../App.css";
 import { auth } from "../firebase.js";
 
-function Registro() {
+function Registro(props) {
   
   const [signUp, setSignUp] = useState(true);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  /* let history = useHistory(); */
+  const [error, setError] = useState(null)
   
+
 const registrar= async (e) => {
- 
+    
     e.preventDefault();
     try {
       const response = await auth.createUserWithEmailAndPassword(email, password);
       console.log(response.user);
-     /* history.push('/notes') */
+      setEmail('')
+      setPassword('')
+      setError(null)
+     props.history.push('/notes')
       
     } catch (error) {
-      console.log(error);
-
+      
       if (error.code === "auth/email-already-in-use") {
-        console.log("Usuario ya registrado...");
+        setError("Usuario ya registrado...");
         return;
       }
       if (error.code === "auth/invalid-email") {
-        console.log("Email no válido");
+        setError("Email no válido");
         return;
       }
+    }
+  }
+  
+  const login = async(e) => {
+    e.preventDefault();
+    try{
+      await auth.signInWithEmailAndPassword(email, password) 
+      setEmail('')
+      setPassword('')
+      setError(null)
+      props.history.push('/notes')
+    }catch (error) {
+      if(error.code === 'auth/user-not-found' ) {
+          setError('Usuario o contraseña incorrecta')
+      }
+      if(error.code === 'auth/wrong-password'){
+          setError('Usuario o contraseña incorrecta')
+      }
+
     }
   }
  
@@ -50,7 +72,14 @@ const registrar= async (e) => {
         <div className="tab-content">
           <div id="">
             <h1>{signUp ? "Sing Up for free" : "Welcome Back"}</h1>
-            <form onSubmit={registrar}>
+            <form>
+            {
+                error ? (
+                    <div className="alert alert-danger">
+                        {error}
+                    </div>
+                ) : null
+            }
               <div className="field-wrap">
                 <input
                   type="text"
@@ -69,7 +98,7 @@ const registrar= async (e) => {
                   required
                 />
               </div>
-              <button type="submit">
+              <button type="submit" onClick={signUp ?registrar :login}>
                 
                 {signUp ? "Get Started" : "Log in"}
 

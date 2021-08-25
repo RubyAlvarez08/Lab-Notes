@@ -104,3 +104,24 @@ button {
   background:#1ab188;
   color:#fff;
 }
+.notes{
+  display: flex;
+  height: 100vh;
+ 
+}
+section{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  background: #142532;
+  width: 30vw;
+   
+}
+.title{
+  height: 20px;
+}
+main {
+  background-color: #535a59;
+  width: 100vw;
+ 
+}

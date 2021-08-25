@@ -6,15 +6,17 @@ import {
 } from "react-router-dom";
 import Registro from './components/Registro';
 import Notes from './components/Notes';
+import Error404 from './components/Error404';
 
 
 function App() {
   return (
+    
     <Router>
     <Switch>
-          <Route path="/" component={Registro} />
-          <Route path="/notes" component={Notes} />
-        {/*   <Route path=""> </Route> */}
+          <Route exact path="/" component={Registro} />
+          <Route exact path="/notes" component={Notes} />
+          <Route path="*" component={Error404} />
         </Switch>
     </Router>
   );
